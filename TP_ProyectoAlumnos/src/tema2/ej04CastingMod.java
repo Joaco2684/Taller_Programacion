@@ -14,6 +14,9 @@ public class ej04CastingMod {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //-----------------------------------------------
+        // ESTA TODO EL EJERCICIO MAL (CORREGIR EN BASE AL EJ03CASTING.JAVA)
+        //-----------------------------------------------
         Persona[][] Casting = new Persona[5][8];
         
         int[][] cantidad = new int[5][2]; //Almacena la cantidad de turnos por dia

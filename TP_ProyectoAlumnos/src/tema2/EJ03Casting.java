@@ -16,44 +16,50 @@ public class EJ03Casting {
         
         
         Persona[][] Casting = new Persona[5][8];
+
         
-        int[][] cantidad = new int[5][2]; //Almacena la cantidad de turnos por dia
         for (int i=0; i<5;i++){
-            cantidad[i][1] = 0; //Cant turnos por dia
-        }
-        
-        boolean flag = true; //Bandera que controla la lectura hasta "ZZZ"
-        
-        for (int i=0;i<5;i++){
-            if (flag) {
-                for (int j=0;j<8;j++) {
-                    if (flag) {
-                        System.out.print("Ingrese el nombre:");
-                        String nom = Lector.leerString();
-                        if(!nom.equals("ZZZ")) {
-                            System.out.print("Ingrese el dni:");
-                            int dni = Lector.leerInt();
-                            System.out.print("Ingrese la edad:");
-                            int edad = Lector.leerInt();
-                            Persona per = new Persona(nom,dni,edad);
-                            Casting[i][j] = per; //Agrega persona a Casting
-                            cantidad[i][1]++; //Aumenta la cantidad de turnos ocupados en el dia "i"
-                        } else {
-                            flag = false;
-                        }
-                    }
-                }
+            for (int j=0; j<8; j++) {
+                Casting[i][j] = null;
             }
-            
         }
         
+       int i=0;
+       int j=0;
+       
+       System.out.print("Ingrese el nombre");
+       String nom = Lector.leerString();
+       while ((i<5) && !nom.equals("ZZZ")){
+           while ((j<8) && (!nom.equals("ZZZ"))) {
+               System.out.print("Ingrese el dni:");
+               int dni = Lector.leerInt();
+               System.out.print("Ingrese la edad:");
+               int edad = Lector.leerInt();
+               Persona per = new Persona(nom, dni, edad);
+               Casting[i][j] = per;
+               j++;
+               System.out.print("Ingrese el nombre");
+               nom = Lector.leerString();
+           }
+           if (!nom.equals("ZZZ")) { //Si es "ZZZ" se van a guardar los indices, no se reincian
+            j=0;
+            i++;
+           }
+           
+           
+       }
+        
+      
         //IMPRIME CASTING COMPLETO
-        for (int i=0; i<5; i++) {
-            System.out.print("DIA " + i);
-            for(int j=0; j<cantidad[i][1]; j++) { // cantidad[x][y] => En la posicion y se encuentra la cantidad de turnos ocupados en el dia x
-                System.out.print(" |Turno " + j + " Nombre: " + Casting[i][j].getNombre());
+        for (int a=0; a<(i-1);a++) { //Imprime completo los dias llenos
+            System.out.print("DIA " + a);
+            for (int b=0; b<8; b++) {
+                System.out.print(" |Turno " + (b) + " Nombre: " + Casting[a][b].getNombre());
             }
-            System.out.println("");
+        }
+        for (int b=0; b<j; b++) { //Imprime el ultimo dia, los castings ocupados
+            System.out.print("DIA " + i);
+            System.out.print(" |Turno " + (b) + " Nombre: " + Casting[i][b].getNombre());
         }
             
         

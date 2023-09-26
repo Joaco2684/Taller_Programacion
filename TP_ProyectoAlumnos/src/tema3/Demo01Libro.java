@@ -15,9 +15,8 @@ public class Demo01Libro {
     public static void main(String[] args) {
         Libro libro = new Libro();
         libro.setTitulo("Java: A Beginner's Guide");
-        libro.setEditorial("Mcgraw-Hill");
+        libro.setEditorial("Mcgsraw-Hill");
         libro.setAñoEdicion(2014);
-        libro.setPrimerAutor("Herbert Schildt");
         libro.setISBN("978-0071809252");
         libro.setPrecio(21.72);
         System.out.println(libro.toString());
